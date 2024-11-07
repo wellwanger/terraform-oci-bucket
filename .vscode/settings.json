@@ -1,5 +1,0 @@
-{
-    "yaml.schemas": {
-        "https://json.schemastore.org/yamllint.json": "file:///c%3A/wellwanger/terraform/terraform-oci-bucket/.github/workflows/terraform-fmt.yaml"
-    }
-}
