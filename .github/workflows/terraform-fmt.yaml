@@ -1,23 +1,27 @@
 name: terraform-fmt
 on:
   pull_request:
+    branches:
+       - main
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
+
   terraform-fmt:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    steps:
 
-    - name: Setup Terraform
-      uses: hashcorp/setup-terraform@v3
-      with:
-        terraform_version: "1.5.5"
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Terraform Format
-      run: terraform fmt -check -recursive -diff
+      - name: Setup Terraform
+        uses: hashcorp/setup-terraform@v3
+        with:
+          terraform_version: "1.5.5"
+
+      - name: Terraform Format
+        run: terraform fmt -check -recursive -diff
