@@ -1,0 +1,29 @@
+name: TFSec
+on:
+  pull_request:
+    branches:
+       - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+
+  TFSec:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: tfsec
+        uses: aquasecurity/tfsec-sarif-action@v0.1.0
+        with:
+          sarif_file: tfsec.sarif
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: tfsec.sarif
